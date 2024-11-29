@@ -21,13 +21,8 @@ public class Capture {
 
     @ManyToOne
     @JoinColumn(name = "pokemon_id")
-    private Pokemon pokemon; // El Pokémon capturado
-
+    private Pokemon pokemon;
     @ManyToOne
     @JoinColumn(name = "trainer_id")
-    private Trainer trainer; // El entrenador que realizó la captura
-
-    private LocalDateTime capturedAt; // Hora de la captura
-
-    // Otros métodos o lógica si es necesario
+    private Trainer trainer;
 }

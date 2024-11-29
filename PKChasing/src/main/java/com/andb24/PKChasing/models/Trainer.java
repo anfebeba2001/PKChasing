@@ -21,7 +21,5 @@ public class Trainer {
 
     @ManyToOne
     @JoinColumn(name = "center_id")
-    private Center center; // El centro donde el entrenador realiza las capturas.
-
-    // Métodos adicionales si se necesitan.
+    private Center center;
 }
