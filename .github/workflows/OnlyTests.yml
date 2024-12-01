@@ -8,7 +8,7 @@ on:
 
 jobs:
   run-all-tests:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     services:
       postgres:
