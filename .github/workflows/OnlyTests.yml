@@ -26,4 +26,4 @@ jobs:
           maven-version: 3.8.2
 
       - name: All the Tests and Coverage Checks
-        run: mvn clean install  
+        run: mvn clean install  -f PKChasing\pom.xml
