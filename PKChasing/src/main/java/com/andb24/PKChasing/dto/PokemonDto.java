@@ -12,7 +12,5 @@ public class PokemonDto {
     private String type;
     private int level;
     private boolean isCaptured;
-    @ManyToOne
-    @JoinColumn(name = "center_id")
-    private Center center;
+    private CenterDto centerDto;
 }

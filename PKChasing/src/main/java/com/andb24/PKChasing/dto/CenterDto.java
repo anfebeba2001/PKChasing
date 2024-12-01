@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 public class CenterDto {
     private String name;
-    private String Location;
+    private String location;
     private int capturedPokemons;
     private int trainers;
     private int level;

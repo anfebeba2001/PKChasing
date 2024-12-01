@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface PokemonRepository extends JpaRepository<Pokemon, Long> {
-    List<Pokemon> findAllByType(String type);
+    List<Pokemon> findByType(String name);
+
 }
