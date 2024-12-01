@@ -1,15 +1,25 @@
-
 name: OnlyTests
 
 on:
   push:
     branches-ignore:
       - main
-      - master  
+      - master
 
 jobs:
   run-all-tests:
     runs-on: windows-latest
+
+    services:
+      postgres:
+        image: postgres:13  # Usando la imagen oficial de PostgreSQL
+        env:
+          POSTGRES_PASSWORD: sample  # Contraseña para el usuario 'postgres'
+          POSTGRES_DB: testdb  # Nombre de la base de datos para los tests
+        ports:
+          - 5432:5432  # Mapeo de puertos, PostgreSQL usa el puerto 5432
+        options: --health-cmd="pg_isready -U postgres" --health-timeout=5s --health-start-period=30s
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -21,9 +31,17 @@ jobs:
           distribution: 'adopt'
 
       - name: Set up Maven
-        uses: stCarolas/setup-maven@v5  
+        uses: stCarolas/setup-maven@latest
         with:
           maven-version: 3.8.2
 
+      - name: Wait for PostgreSQL to be ready
+        run: |
+          # Esperamos que PostgreSQL esté disponible
+          until pg_isready -h 127.0.0.1 -p 5432 -U postgres; do
+            echo "Esperando por la base de datos PostgreSQL..."
+            sleep 5
+          done
+
       - name: All the Tests and Coverage Checks
-        run: mvn clean install  -f PKChasing\pom.xml
+        run: mvn clean install -f ./PKChasing/pom.xml
