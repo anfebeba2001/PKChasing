@@ -12,12 +12,12 @@ jobs:
 
     services:
       postgres:
-        image: postgres:13  # Usando la imagen oficial de PostgreSQL
+        image: postgres:13 
         env:
-          POSTGRES_PASSWORD: sample  # Contraseña para el usuario 'postgres'
-          POSTGRES_DB: testdb  # Nombre de la base de datos para los tests
+          POSTGRES_PASSWORD: sample 
+          POSTGRES_DB: pkchasing  
         ports:
-          - 5432:5432  # Mapeo de puertos, PostgreSQL usa el puerto 5432
+          - 5432:5432 
         options: --health-cmd="pg_isready -U postgres" --health-timeout=5s --health-start-period=30s
 
     steps:
