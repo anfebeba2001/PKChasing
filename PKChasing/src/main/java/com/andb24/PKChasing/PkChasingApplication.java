@@ -16,7 +16,7 @@ public class PkChasingApplication {
 	@GetMapping("/")
 	public String apiRoot()
 	{
-		return "API para cazar tus pokemones :D por: Andrés B.";
+		return "API para cazar tus pokemones por: Andrés B.";
 	}
 
 
